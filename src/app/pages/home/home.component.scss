@@ -1,4 +1,9 @@
 .home {
-  height: 100vh;
+  height: calc(100% - 48px);
   box-sizing: border-box;
+  margin: 24px;
+
+  .title {
+    margin-bottom: 16px;
+  }
 }
