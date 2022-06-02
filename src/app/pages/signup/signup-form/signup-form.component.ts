@@ -10,6 +10,7 @@ export class SignupFormComponent {
   signupForm = this.fb.group({
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
   });
 
   get firstnameControl() {
@@ -18,6 +19,10 @@ export class SignupFormComponent {
 
   get lastnameControl() {
     return this.signupForm.get('lastname');
+  }
+
+  get emailControl() {
+    return this.signupForm.get('email');
   }
 
   constructor(private fb: FormBuilder) {}
