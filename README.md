@@ -1,6 +1,17 @@
 # SinglePageApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+This project is a single page app with a sign-up form.
+
+## About the project
+
+_Note_ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+Angular CLI provides the default configuration to run unit tests. Angular CLI doesn't provide end-to-end testing capabilities by default.
+
+The project relies on [Angular Material](https://material.angular.io/) and [Bootstrap Grid system](https://getbootstrap.com/). Angular Material provides a set of reusable and accessible UI components. Angular Material perfectly fits for projects with forms which require various validation scenarios.
+
+The project employs [prettier](https://prettier.io/docs/en/install.html) with a pre-commit hook. This makes sure all your commits are formatted.
+
+The project uses [Cypress](https://www.cypress.io/) as an end-to-end testing framework.
 
 ## Development server
 
