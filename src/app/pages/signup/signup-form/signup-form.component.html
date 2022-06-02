@@ -62,4 +62,16 @@
       </mat-error>
     </mat-form-field>
   </section>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="full-width-field"
+    [attr.aria-label]="'Sign Up'"
+  >
+    Sign Up
+  </button>
+  <mat-error *ngIf="submitError">
+    Ooops... Something went wrong! Please retry or contact to the support desk.
+  </mat-error>
 </form>

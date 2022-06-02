@@ -30,6 +30,7 @@ export class SignupFormComponent {
   );
 
   hiddenPassword = true;
+  submitError = false;
 
   get firstnameControl() {
     return this.signupForm.get('firstname');

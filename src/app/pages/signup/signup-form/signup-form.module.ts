@@ -4,9 +4,16 @@ import { SignupFormComponent } from './signup-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [SignupFormComponent],
-  imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatIconModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   exports: [SignupFormComponent],
 })
 export class SignupFormModule {}
