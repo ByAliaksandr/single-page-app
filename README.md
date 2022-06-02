@@ -32,11 +32,30 @@ The app contains to 2 pages: `signup` and `home`; 1 `signup` service; 1 `shouldN
 
 `signup` and `home` page are covered by components tests
 
-`signup-form` component has mixed of unit and component tests
+`signup-form` component has mixed of unit and component tests (more tes scenarious can be added)
 
 `signup` page is also covered by e2e tests
 
-The testing strategy follows the `shift left` testing approach. The key idea is about pushing testing toward the early stages of software development. While testing a component you first cover it by unit tests, then you consider scenarios which are not covered, and cover them by component tests. You evaluate if more scenarios are left and cover them by e2e tests.
+The testing strategy follows the `shift left` testing approach. The key idea is about pushing testing toward the early stages of software development. While testing a component, you first cover it by unit tests, then you consider scenarios which are not covered, and cover them by component tests. You evaluate if more scenarios are left and cover them by e2e tests.
+
+## The project structure
+
+The project has `pages` and `libs` folders. The page embraces and isolates the business logic. The `libs` folder is a shared folder for common components and services.
+
+## The project improvements
+
+- `signup-form` component can be extended and covered by various scenarios of component tests. The scenarios can validate the template representation and consider error testing based on the user input. The extansion of component scenarious can prevent the need of having e2e tests.
+
+## Question and answers
+
+- Why angular forms email validator is used?
+
+It is a well-tested and robust solution which doesn't require extra effort.
+
+- Why Angular Material is used?
+
+Angular Material perfectly fits projects with forms which require various validation scenarios.
+Angular Material UI and animation bring the project to the 'production-ready' state: it stays on brand; it works across the web and mobile; it is optimized for Angular.
 
 ## Development server
 
