@@ -57,6 +57,10 @@ It is a well-tested and robust solution which doesn't require extra effort.
 Angular Material perfectly fits projects with forms which require various validation scenarios.
 Angular Material UI and animation bring the project to the 'production-ready' state: it stays on brand; it works across the web and mobile; it is optimized for Angular.
 
+## Set dependencies
+
+Run `npm install`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
