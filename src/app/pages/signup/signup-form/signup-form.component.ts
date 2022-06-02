@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { RouterParts } from 'src/app/app-routing-path.enum';
 import { shouldNotContain } from 'src/app/libs/validators/should-not-contain.validator';
+import { SingupRequest } from '../signup-service/signup-request.interface';
+import { SignupService } from '../signup-service/signup.service';
 
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss'],
 })
-export class SignupFormComponent {
+export class SignupFormComponent implements OnDestroy {
   signupForm = this.fb.group(
     {
       firstname: ['', [Validators.required]],
@@ -48,9 +54,32 @@ export class SignupFormComponent {
     return this.signupForm.get('password');
   }
 
-  constructor(private fb: FormBuilder) {}
+  private unsubscribe$ = new Subject<void>();
 
-  submit(): void {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private signupService: SignupService
+  ) {}
+
+  submit(): void {
+    this.submitError = false;
+
+    if (this.signupForm.valid) {
+      this.signupService
+        .signup(this.getSignupData())
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe({
+          next: () => {
+            this.resetForm();
+            this.router.navigate([RouterParts.Home]);
+          },
+          error: () => {
+            this.submitError = true;
+          },
+        });
+    }
+  }
 
   getPasswordErrorMessage(): string {
     if (this.passwordControl?.hasError('required')) {
@@ -63,5 +92,28 @@ export class SignupFormComponent {
       return 'Password should not contain last name';
     }
     return '';
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  private getSignupData(): SingupRequest {
+    return {
+      firstName: this.firstnameControl?.value,
+      lastName: this.lastnameControl?.value,
+      email: this.emailControl?.value,
+      password: this.passwordControl?.value,
+    };
+  }
+
+  private resetForm(): void {
+    this.signupForm.reset({
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+    });
   }
 }
