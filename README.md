@@ -6,7 +6,7 @@ Password validation supports
 
 - a minimum of eight characters
 - lower and uppercase letters
-- not contain the user’s first or last name
+- do not contain the user’s first or last name
 
 Email validation is a standard angular forms email validator. Please check the link below for more details.
 https://angular.io/api/forms/Validators#email
@@ -18,19 +18,29 @@ The form sends a POST request to https://demo-api.now.sh/users.
 _Note_ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
 Angular CLI provides the default configuration to run unit tests. Angular CLI doesn't provide end-to-end testing capabilities by default.
 
-The project relies on [Angular Material](https://material.angular.io/) and [Bootstrap Grid system](https://getbootstrap.com/). Angular Material provides a set of reusable and accessible UI components. Angular Material perfectly fits for projects with forms which require various validation scenarios.
+The project relies on [Angular Material](https://material.angular.io/) and [Bootstrap Grid system](https://getbootstrap.com/). Angular Material provides a set of reusable and accessible UI components. Angular Material perfectly fits projects with forms which require various validation scenarios.
 
 The project employs [prettier](https://prettier.io/docs/en/install.html) with a pre-commit hook. This makes sure all your commits are formatted.
 
 The project uses [Cypress](https://www.cypress.io/) as an end-to-end testing framework.
 
+The app contains to 2 pages: `signup` and `home`; 1 `signup` service; 1 `shouldNotContain` custom form validator. The app fully reflects the angular component based architecture.
+
+## Testing and strategy
+
+`shouldNotContain` validator and `signup` service are covered by unit tests
+
+`signup` and `home` page are covered by components tests
+
+`signup-form` component has mixed of unit and component tests
+
+`signup` page is also covered by e2e tests
+
+The testing strategy follows the `shift left` testing approach. The key idea is about pushing testing toward the early stages of software development. While testing a component you first cover it by unit tests, then you consider scenarios which are not covered, and cover them by component tests. You evaluate if more scenarios are left and cover them by e2e tests.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
