@@ -36,4 +36,30 @@
       </mat-error>
     </mat-form-field>
   </section>
+
+  <section class="form-group">
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hiddenPassword ? 'password' : 'text'"
+        formControlName="password"
+        autocomplete="off"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hiddenPassword = !hiddenPassword"
+        [attr.aria-label]="'Hide password'"
+      >
+        <mat-icon>{{
+          hiddenPassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="passwordControl?.invalid">
+        {{ getPasswordErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+  </section>
 </form>
