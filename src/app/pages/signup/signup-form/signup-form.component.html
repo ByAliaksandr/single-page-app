@@ -1,7 +1,7 @@
 <form [formGroup]="signupForm" (ngSubmit)="submit()" class="signup-form">
   <section class="form-group">
     <mat-form-field appearance="outline" class="full-width-field">
-      <mat-label>First name</mat-label>
+      <mat-label data-test-id="firstname-label">First name</mat-label>
       <input matInput formControlName="firstname" autocomplete="off" />
       <mat-error *ngIf="firstnameControl?.hasError('required')">
         First name is required
@@ -11,7 +11,7 @@
 
   <section class="form-group">
     <mat-form-field appearance="outline" class="full-width-field">
-      <mat-label>Last name</mat-label>
+      <mat-label data-test-id="lastname-label">Last name</mat-label>
       <input matInput formControlName="lastname" autocomplete="off" />
       <mat-error *ngIf="lastnameControl?.hasError('required')">
         Last name is required
@@ -21,7 +21,7 @@
 
   <section class="form-group">
     <mat-form-field appearance="outline" class="full-width-field">
-      <mat-label>Email</mat-label>
+      <mat-label data-test-id="email-label">Email</mat-label>
       <input
         matInput
         [type]="'email'"
@@ -39,7 +39,7 @@
 
   <section class="form-group">
     <mat-form-field appearance="outline" class="full-width-field">
-      <mat-label>Password</mat-label>
+      <mat-label data-test-id="password-label">Password</mat-label>
       <input
         matInput
         [type]="hiddenPassword ? 'password' : 'text'"

@@ -8,6 +8,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -109,8 +110,22 @@ describe('SignupFormComponent', () => {
       fixture.detectChanges();
     });
 
-    it('should create', () => {
-      expect(component).toBeTruthy();
+    it('should have 4 form inputs', () => {
+      const signupForm = fixture.debugElement.query(By.css('.signup-form'));
+      const inputs = signupForm.queryAll(
+        By.css('mat-form-field.full-width-field')
+      );
+
+      expect(inputs.length).toEqual(4);
+    });
+
+    it('should show firstname label', () => {
+      const signupForm = fixture.debugElement.query(By.css('.signup-form'));
+      const firstnameLabel = signupForm.query(
+        By.css('[data-test-id="firstname-label"]')
+      );
+
+      expect(firstnameLabel.nativeElement.textContent).toContain('First name');
     });
   });
 });
