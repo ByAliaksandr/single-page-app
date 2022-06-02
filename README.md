@@ -1,6 +1,17 @@
 # SinglePageApp
 
-This project is a single page app with a sign-up form.
+This project is a single page app with a sign-up form. The form has 4 fields first name, last name, email and password. All fields are required.
+
+Password validation supports
+
+- a minimum of eight characters
+- lower and uppercase letters
+- not contain the user’s first or last name
+
+Email validation is a standard angular forms email validator. Please check the link below for more details.
+https://angular.io/api/forms/Validators#email
+
+The form sends a POST request to https://demo-api.now.sh/users.
 
 ## About the project
 
